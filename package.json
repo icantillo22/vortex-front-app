@@ -6,7 +6,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npx serve -s build"
+    "start": "npx serve -s dist"
   },
   "heroku-run-build-script": true,
   "dependencies": {
