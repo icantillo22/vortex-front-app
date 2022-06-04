@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import PageNotFound from '@/pages/404Page.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import HomeView from '@/views/Home/Index'
@@ -33,6 +34,12 @@ const routes = [
     component: QuestionView,
     meta: { isProtectedRoute: true }
   },
+  {
+    path: '*',
+    name: '404',
+    component: PageNotFound,
+    meta: { isProtectedRoute: false }
+  }
 ]
 
 const router = new VueRouter({

@@ -6,7 +6,7 @@
           <div class="d-flex align-center">
             <v-avatar
               class="cursor mr-2"
-              :color="dataQuestion.UsersCreate.createdBy == authStore.userData.id ? 'primary' : 'success'"
+              :color="dataQuestion.createdBy == authStore.userData.id ? 'primary' : 'success'"
               :title="dataQuestion.UsersCreate.username"
             >
               <span class="white--text">
