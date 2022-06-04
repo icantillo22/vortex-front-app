@@ -73,6 +73,7 @@
                       outlined 
                       :append-icon="isCPasswordVisible ? icons.mdiEyeOffOutline : icons.mdiEyeOutline"
                       @click:append="isCPasswordVisible = !isCPasswordVisible"
+                      @keyup.enter="signUp"
                     />
                   </v-col>
                 </v-row>

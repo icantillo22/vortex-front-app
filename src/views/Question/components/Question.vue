@@ -6,7 +6,7 @@
           <div class="d-flex align-center">
             <v-avatar
               class="cursor mr-2"
-              :color="dataQuestion.UsersCreate.createdBy === authStore.userData.id ? 'primary' : 'success'"
+              :color="dataQuestion.UsersCreate.createdBy == authStore.userData.id ? 'primary' : 'success'"
               :title="dataQuestion.UsersCreate.username"
             >
               <span class="white--text">
@@ -19,7 +19,7 @@
             <span class="grey--text">Creado el</span>
             {{ moment(dataQuestion.createdAt).format("DD/MM/YYYY hh:mm a") }}
           </small> 
-          <small class="px-1" v-show="dataQuestion.updatedAt">
+          <small class="px-1" v-show="dataQuestion.updatedAt !== dataQuestion.createdAt">
             <span class="grey--text">Actualizado el</span>
             {{ moment(dataQuestion.updatedAt).format("DD/MM/YYYY hh:mm a") }}
           </small> 

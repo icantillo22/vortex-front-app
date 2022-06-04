@@ -52,7 +52,7 @@
                 </v-row>
                 <v-row>
                   <v-col>
-                    ¿Aún no tienes una cuenta? <router-link style="text-decoration: none" :to="{name: 'register'}">Ingresa aquí</router-link>
+                    ¿Aún no tienes una cuenta? <router-link style="text-decoration: none" :to="{name: 'register'}">Regístrate aquí</router-link>
                   </v-col>
                 </v-row>
                 <v-row>
