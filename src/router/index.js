@@ -1,29 +1,52 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import RegisterPage from '@/pages/RegisterPage.vue'
+import HomeView from '@/views/Home/Index'
+import QuestionView from '@/views/Question/Index'
+import store from '@/store/index'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/login',
+    name: 'login',
+    component: LoginPage,
+    meta: { isProtectedRoute: false }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/register',
+    name: 'register',
+    component: RegisterPage,
+    meta: { isProtectedRoute: false }
+  },
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView,
+    meta: { isProtectedRoute: true }
+  },
+  {
+    path: '/question/:id',
+    name: 'question',
+    component: QuestionView,
+    meta: { isProtectedRoute: true }
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const protectedRoutes = to.matched.some(item => item.meta.isProtectedRoute)
+
+  if (protectedRoutes && store.state.authStore.token === null) next({name: 'login'})
+
+  next()
 })
 
 export default router

@@ -1,32 +1,39 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <app-bar v-if="authStore.token" />
+    <v-main class="bg-main">
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
+<script>
+import { mapActions, mapState } from 'vuex';
+import AppBar from './components/AppBar.vue';
+
+export default {
+  components: { AppBar },
+  name: 'App',
+  created() {
+    this.getToken()
+  },
+  computed: {
+    ...mapState(['authStore'])
+  },
+  methods: {
+    ...mapActions('authStore', ['getToken']),
+  },
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+  .bg-main {
+    background-color: rgb(247, 247, 247);
+  }
+  .cursor {
+    cursor: pointer;
+  }
 </style>
