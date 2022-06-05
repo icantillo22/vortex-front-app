@@ -16,16 +16,6 @@
           <div v-if="dataResponse.Questions.createdBy !== authStore.userData.id">
             ({{ dataResponse.qualification }}<v-icon color="yellow darken-3" size="13">{{ icons.mdiStar }}</v-icon>)
           </div>
-
-          <small class="mx-1" v-if="dataResponse.createdAt === dataResponse.updatedAt"> 
-            <span class="grey--text "> - Creado el </span>              
-            {{ moment(dataResponse.createdAt).format("DD/MM/YYYY hh:mm a") }}
-          </small>
-          <small class="mx-1" v-else> 
-              <span class="grey--text "> - Editado el </span>              
-              {{ moment(dataResponse.updatedAt).format("DD/MM/YYYY hh:mm a") }}
-            </small>
-
           <v-spacer></v-spacer>
           <v-menu
             bottom
@@ -52,6 +42,15 @@
             </v-list>
           </v-menu>
         </div>
+        <small class="mx-1" v-if="dataResponse.createdAt === dataResponse.updatedAt"> 
+          <span class="grey--text"> Creado el </span>              
+          {{ moment(dataResponse.createdAt).format("DD/MM/YYYY hh:mm a") }}
+        </small>
+        <small class="mx-1" v-else> 
+          <span class="grey--text">Editado el </span>              
+          {{ moment(dataResponse.updatedAt).format("DD/MM/YYYY hh:mm a") }}
+        </small>
+        <v-divider class="mt-2" />
       </v-col>
     </v-row>
     <v-row class="py-0">
